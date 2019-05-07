@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="job_details_form_view" model="ir.ui.view">
+            <field name="name">job details form view</field>
+            <field name="model">job.details</field>
+            <field name="arch" type="xml">
+                <form string="Job Information">
+                    <group>
+                        <field name="name"/>
+                        <field name="job_position"/>
+                        <field name="description"/>
+                        <field name="company_line"/>
+<!--                    <field name="account_line">
+                                <tree string="Information">
+                                <field name="name"/>
+                                <field name="account_holder_name"/>
+                                </tree>
+                        </field>
+!-->
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="job_details_list_view" model="ir.ui.view">
+            <field name="name">job details list view</field>
+            <field name="model">job.details</field>
+            <field name="arch" type="xml">
+                <tree string="Job Information">
+                        <field name="name"/>
+                        <field name="job_position"/>
+                        <field name="description"/>
+                    <field name="company_line"/>
+                </tree>
+            </field>
+        </record>
+
+
+          <record id="job_details_search_view" model="ir.ui.view">
+            <field name="name">job details search</field>
+            <field name="model">job.details</field>
+            <field name="arch" type="xml">
+                    <search>
+                        <filter string="job_position" domain="[('job_position','=', 'developer')]"/>
+                        <field name="name"/>
+
+                        <group expand="0" string="Group By...">
+                            <filter string="job_position" domain="[ ]" context="{'group_by':'job_position'}"/>
+                        </group>
+                    </search>
+            </field>
+          </record>
+
+
+         <record id="action_job_details" model="ir.actions.act_window">
+            <field name="name">Jobs</field>
+            <field name="res_model">job.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+        <menuitem id="job_details_menu" name="Jobs" action="action_job_details"
+                  parent="company"/>
+
+    </data>
+</flectra>

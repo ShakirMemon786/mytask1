@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="company_details_form_view" model="ir.ui.view">
+            <field name="name">company details form view</field>
+            <field name="model">company.details</field>
+            <field name="arch" type="xml">
+                <form string="Company Information">
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="location"/>
+                        <field name="start_date"/>
+                        <field name="job_id"/>
+                        <field name="job_seeker_ids"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="company_details_list_view" model="ir.ui.view">
+            <field name="name">company details list view</field>
+            <field name="model">company.details</field>
+            <field name="arch" type="xml">
+                <tree string="Company Information">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="location"/>
+                    <field name="start_date"/>
+                    <field name="job_id"/>
+                    <field name="job_seeker_ids"/>
+                </tree>
+            </field>
+        </record>
+
+          <record id="company_search_view" model="ir.ui.view">
+            <field name="name">company details search</field>
+            <field name="model">company.details</field>
+            <field name="arch" type="xml">
+                    <search>
+                        <!--<filter string="account_type" domain="[('account_type','=', 'current')]"/> !-->
+                        <field name="name"/>
+
+                       <!-- <group expand="0" string="Group By...">
+                            <filter string="card_type" domain="[('card_type','=', 'rupay')]" context="{'group_by':'card_type'}"/>
+                        </group> !-->
+                    </search>
+            </field>
+          </record>
+
+
+        <record id="account_search_view_calendar" model="ir.ui.view">
+            <field name="name">calendar</field>
+            <field name="model">company.details</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar" date_start="start_date" color="name">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+
+
+        <record id="action_company_details" model="ir.actions.act_window">
+            <field name="name">Company</field>
+            <field name="res_model">company.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+
+        </record>
+
+        <menuitem id="company" name="Company"  action="action_company_details"/>
+        <menuitem id="company_details_menu" name="Company Details" action="action_company_details"
+                  parent="company"/>
+<!--
+        <menuitem id="account_management_config" name="Account Config" parent="account_mgmt_root"/>
+
+        <menuitem id="account_mgmt_menu" name="account" action="action_account_details"
+                  parent="account_management_config"/>
+!-->
+
+    </data>
+</flectra>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+
+        <record id="job_seeker_details_form_view" model="ir.ui.view">
+            <field name="name">job seeker details form view</field>
+            <field name="model">job.seeker.details</field>
+            <field name="arch" type="xml">
+                <form string="Job Seeker Information">
+                    <header>
+                        <button name="button_applied" string="Applied" widget="statusbar"  class="oe_highlight" type="object"/>
+                        <button name="button_recruted" string="Recruted" widget="statusbar" class="oe_highlight" type="object"/>
+                        <button name="button_cancle" string="Cancle"  widget="statusbar" class="oe_highlight" type="object"/>
+                        <field name="state" widget ="statusbar" statusbar_visible="applied,recruted,cancle"/>
+                    </header>
+                    <group>
+                        <field name="name"/>
+                        <field name="degree"/>
+                        <field name="user_email"/>
+                        <field name="salary_proposed"/>
+                        <field name="salary_expected"/>
+                        <field name="availability"/>
+                        <field name="phone"/>
+                        <field name="mobile"/>
+                        <field name="job_id"/>
+                      <!--  <field name="company_id"/> !-->
+                        <field name="company_details_ids"/>
+
+<!--                    <field name="account_line">
+                                <tree string="Information">
+                                <field name="name"/>
+                                <field name="account_holder_name"/>
+                                </tree>
+                        </field>
+!-->
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="job_seeker_list_view" model="ir.ui.view">
+            <field name="name">job seeker details list view</field>
+            <field name="model">job.seeker.details</field>
+            <field name="arch" type="xml">
+                <tree string="Job Seeker Information">
+                        <field name="name"/>
+                        <field name="degree"/>
+                        <field name="user_email"/>
+                        <field name="salary_proposed"/>
+                        <field name="availability"/>
+                        <field name="mobile"/>
+                        <field name="job_id"/>
+                        <field name="state"/>
+                   <!--     <field name="company_id"/>
+                             <field name="company_details_ids"/>!-->
+                </tree>
+            </field>
+        </record>
+
+
+         <record id="action_job_seeker_details" model="ir.actions.act_window">
+            <field name="name">Jobs Seeker</field>
+            <field name="res_model">job.seeker.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+        <menuitem id="job_seeker_details_menu" name="Jobs Seeker" action="action_job_seeker_details"
+                  parent="company"/>
+
+    </data>
+</flectra>
